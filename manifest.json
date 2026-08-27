@@ -1,0 +1,15 @@
+{
+  "name": "Smart Safety Vest - Supervisor App",
+  "short_name": "SafetyVest",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff6b35",
+  "icons": [
+    {
+      "src": "https://github.com/user-attachments/assets/4162c9a6-17cc-40ec-9aae-5b650cc672cf",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

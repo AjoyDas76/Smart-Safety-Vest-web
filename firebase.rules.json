@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "devices": {
+      "$deviceId": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid == $deviceId || auth.token.email == 'supervisor@example.com'",
+        "sensors": { ".validate": true },
+        "location": { ".validate": true },
+        "status": { ".validate": true },
+        "battery": { ".validate": true },
+        "alerts": { ".validate": true },
+        "session": { ".validate": true },
+        "security": { ".write": "auth != null && auth.uid == $deviceId" }
+      }
+    },
+    "alerts": {
+      "$alertId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "history": {
+      "$deviceId": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid == $deviceId"
+      }
+    }
+  }
+}

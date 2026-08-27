@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#ff6b35">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Smart Safety Vest - Supervisor App</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+  <!-- ============ LOGIN VIEW ============ -->
+  <div id="loginView" class="view active">
+    <div class="login-card">
+      <div class="logo">🦺</div>
+      <h1>Smart Safety Vest</h1>
+      <p class="subtitle">Supervisor Monitoring</p>
+
+      <div id="loginError" class="alert error hidden"></div>
+
+      <input type="email" id="loginEmail" placeholder="Email" autocomplete="username">
+      <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+      <button id="loginBtn" class="btn primary">Sign In</button>
+    </div>
+  </div>
+
+  <!-- ============ MAIN APP ============ -->
+  <div id="appView" class="view">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-title">
+        <span class="status-dot" id="connDot"></span>
+        <strong>Safety Vest</strong>
+      </div>
+      <div class="header-user">
+        <span id="userEmail" class="user-email"></span>
+        <button id="logoutBtn" class="btn small">Logout</button>
+      </div>
+    </header>
+
+    <!-- Tab navigation -->
+    <nav class="tab-bar">
+      <button class="tab active" data-tab="dashboard">Dashboard</button>
+      <button class="tab" data-tab="map">Map</button>
+      <button class="tab" data-tab="alerts">Alerts</button>
+      <button class="tab" data-tab="history">History</button>
+    </nav>
+
+    <!-- ===== DASHBOARD TAB ===== -->
+    <section id="dashboard" class="tab-panel active">
+
+      <!-- Worker status hero -->
+      <div class="hero" id="workerHero">
+        <div class="hero-status">--</div>
+        <div class="hero-meta">No data yet</div>
+      </div>
+
+      <!-- Alert banner -->
+      <div id="alertBanner" class="alert-banner hidden">
+        <strong id="alertBannerText">ALERT</strong>
+      </div>
+
+      <!-- Sensor cards -->
+      <div class="card-grid">
+        <div class="sensor-card">
+          <div class="sensor-label">Temperature</div>
+          <div class="sensor-value" id="tempValue">--</div>
+          <div class="sensor-unit">°C</div>
+        </div>
+        <div class="sensor-card">
+          <div class="sensor-label">Humidity</div>
+          <div class="sensor-value" id="humValue">--</div>
+          <div class="sensor-unit">%</div>
+        </div>
+        <div class="sensor-card">
+          <div class="sensor-label">Pressure</div>
+          <div class="sensor-value" id="presValue">--</div>
+          <div class="sensor-unit">hPa</div>
+        </div>
+        <div class="sensor-card">
+          <div class="sensor-label">Battery</div>
+          <div class="sensor-value" id="batValue">--</div>
+          <div class="sensor-unit">%</div>
+        </div>
+      </div>
+
+      <!-- GPS quick info -->
+      <div class="gps-panel">
+        <div class="gps-row"><span>Latitude</span><span id="gpsLat">--</span></div>
+        <div class="gps-row"><span>Longitude</span><span id="gpsLng">--</span></div>
+        <div class="gps-row"><span>Speed</span><span id="gpsSpeed">--</span></div>
+        <div class="gps-row"><span>Updated</span><span id="gpsTime">--</span></div>
+      </div>
+    </section>
+
+    <!-- ===== MAP TAB ===== -->
+    <section id="map" class="tab-panel">
+      <div id="mapContainer"></div>
+    </section>
+
+    <!-- ===== ALERTS TAB ===== -->
+    <section id="alerts" class="tab-panel">
+      <div id="alertsList" class="alerts-list">
+        <div class="empty-state">No alerts yet</div>
+      </div>
+    </section>
+
+    <!-- ===== HISTORY TAB ===== -->
+    <section id="history" class="tab-panel">
+      <div id="historyList" class="alerts-list">
+        <div class="empty-state">Loading history...</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Firebase SDK (v9 compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- App config + logic -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

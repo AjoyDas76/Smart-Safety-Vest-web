@@ -1,0 +1,259 @@
+/* ============================================================
+   Smart Safety Vest - Supervisor App Styles (Mobile-first)
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --primary: #ff6b35;
+  --primary-dark: #e05a28;
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #1a1d23;
+  --muted: #6b7280;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --border: #e5e7eb;
+  --radius: 14px;
+  --shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hidden { display: none !important; }
+
+/* ================= LOGIN ================= */
+.view {
+  display: none;
+  min-height: 100vh;
+}
+.view.active { display: flex; flex-direction: column; }
+
+#loginView {
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(160deg, #1a1d23 0%, #2d3748 100%);
+}
+
+.login-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.login-card .logo { font-size: 52px; }
+.login-card h1 { font-size: 24px; margin-top: 8px; }
+.login-card .subtitle { color: var(--muted); margin: 4px 0 20px; }
+
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 16px;
+  background: #f9fafb;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn:active { opacity: 0.8; }
+.btn.primary { background: var(--primary); color: #fff; width: 100%; margin-top: 12px; }
+.btn.small { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); padding: 6px 12px; font-size: 13px; border-radius: 8px; }
+
+/* ================= ALERTS ================= */
+.alert {
+  padding: 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.alert.error { background: #fee2e2; color: #b91c1c; }
+
+/* ================= HEADER ================= */
+.app-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-title { display: flex; align-items: center; gap: 8px; }
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-block;
+}
+.status-dot.online { background: #4ade80; box-shadow: 0 0 8px #4ade80; }
+.status-dot.offline { background: #f87171; }
+
+.header-user { display: flex; align-items: center; gap: 10px; }
+.user-email { font-size: 12px; opacity: 0.9; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ================= TABS ================= */
+.tab-bar {
+  display: flex;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 52px;
+  z-index: 90;
+}
+.tab {
+  flex: 1;
+  padding: 12px 4px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+.tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+.tab-panel { display: none; padding: 16px; padding-bottom: 80px; }
+.tab-panel.active { display: block; }
+
+/* ================= HERO ================= */
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: var(--radius);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.hero-status { font-size: 26px; font-weight: 800; letter-spacing: 0.5px; }
+.hero-meta { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+
+/* ================= ALERT BANNER ================= */
+.alert-banner {
+  background: var(--danger);
+  color: #fff;
+  padding: 14px;
+  border-radius: var(--radius);
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 16px;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ================= SENSOR CARDS ================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.sensor-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.sensor-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.sensor-value { font-size: 28px; font-weight: 800; margin: 6px 0 2px; }
+.sensor-unit { font-size: 12px; color: var(--muted); }
+
+/* ================= GPS PANEL ================= */
+.gps-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  box-shadow: var(--shadow);
+}
+.gps-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.gps-row:last-child { border-bottom: none; }
+.gps-row span:first-child { color: var(--muted); }
+
+/* ================= MAP ================= */
+#mapContainer {
+  width: 100%;
+  height: calc(100vh - 140px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ================= ALERTS / HISTORY LISTS ================= */
+.alerts-list { display: flex; flex-direction: column; gap: 10px; }
+.empty-state { text-align: center; color: var(--muted); padding: 40px 0; }
+
+.alert-item {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--border);
+}
+.alert-item.fall { border-left-color: var(--danger); }
+.alert-item.sos { border-left-color: var(--warning); }
+.alert-item-title { font-weight: 700; font-size: 15px; }
+.alert-item-meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+/* ================= TOAST ================= */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  max-width: 90%;
+  text-align: center;
+}
+.toast.error { background: var(--danger); }
+
+@media (min-width: 768px) {
+  .card-grid { grid-template-columns: repeat(4, 1fr); }
+  .tab-panel { max-width: 760px; margin: 0 auto; }
+}
